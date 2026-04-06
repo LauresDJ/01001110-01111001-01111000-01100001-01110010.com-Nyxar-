@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>* They. *</title>
+  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      overflow: hidden;
+      cursor: default;
+      position: relative;
+      font-family: monospace, monospace;
+      background: black;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* GIF de fondo aclarado */
+    #gifFondo {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      filter: brightness(1.4) contrast(1.1);
+    }
+
+    /* Imagen pixelada clicable sin bordes ni sombra, centrada */
+    #pixelImage {
+      position: relative;
+      z-index: 10;
+      width: 200px; /* Tamaño aumentado */
+      cursor: pointer;
+      user-select: none;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="gifFondo" src="fondo.gif" alt="Fondo animado" />
+
+  <img id="pixelImage" src="pixel.png" alt="Haz click para reproducir música" />
+
+  <audio id="audio" preload="auto">
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const pixelImage = document.getElementById('pixelImage');
+    const audio = document.getElementById('audio');
+
+    pixelImage.addEventListener('click', () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
+  </script>
+  
+</body>
+</html>
